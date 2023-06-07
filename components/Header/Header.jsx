@@ -26,6 +26,7 @@ const NAV__LINK = [
 ];
 
 const Header = () => {
+  const [crossMenu, setCrossMenu] = useState(false)
   const headerRef = useRef(null);
 
   const menuRef = useRef(null);
@@ -49,8 +50,10 @@ const Header = () => {
     return () => window.removeEventListener("scroll", headerFunc);
   }, []);
 
-  const toggleMenu = () =>
+  const toggleMenu = () => {
+    setCrossMenu(!crossMenu)
     menuRef.current.classList.toggle(`${classes.menu__active}`);
+  }
 
   return (
     <header className={`${classes.header}`} ref={headerRef}>
@@ -72,10 +75,13 @@ const Header = () => {
             onClick={toggleMenu}
           >
             <div className={`${classes.nav__menu}`}>
-              <div className="border  text-4xl absolute top-10 right-10 font-extrabold
+
+
+              {crossMenu && <div className="border  text-4xl  absolute top-10 right-10 font-extrabold
               ">
                 <RiCloseLine />
-              </div>
+
+              </div>}
 
 
               {NAV__LINK.map((item, index) => (
