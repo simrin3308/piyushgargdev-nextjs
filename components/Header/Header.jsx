@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { RiCloseLine } from "react-icons/ri";
 
 import { Container } from "reactstrap";
 import { useSession, signOut, signIn } from "next-auth/react";
@@ -71,6 +72,12 @@ const Header = () => {
             onClick={toggleMenu}
           >
             <div className={`${classes.nav__menu}`}>
+              <div className="border  text-4xl absolute top-10 right-10 font-extrabold
+              ">
+                <RiCloseLine />
+              </div>
+
+
               {NAV__LINK.map((item, index) => (
                 <Link aria-label={item.display} href={item.path} key={index}>
                   {item.display}
